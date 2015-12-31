@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var routes = require('./app/routes/index.js');
 var mongo = require('mongodb');
 
-mongo.connect('mongodb://heroku_5xmh9kp6:n8soimuuccsde5tsq6er5jlbie@ds037205.mongolab.com:37205/heroku_5xmh9kp6', function(err, db) {
+mongo.connect('mongodb://heroku_z3c29mk0:ib682pkjde4ot5a36sortc6fb1@ds037215.mongolab.com:37215/heroku_z3c29mk0', function(err, db) {
 
   if (err) {
       throw new Error('Database failed to connect!');
