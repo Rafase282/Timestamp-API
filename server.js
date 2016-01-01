@@ -11,6 +11,7 @@ var api = require('./app/api/timestamp.js');
 // this will let us get the data from a POST
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use('/public', express.static(process.cwd() + '/public'));
     
 var port = process.env.PORT || 8080;        // set our port
     
