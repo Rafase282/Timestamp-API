@@ -5,17 +5,21 @@ module.exports = function(app) {
 
     app.get('/:query', function(req, res) {
         var date = req.params.query;
-        var unix, natural;
+        var unix = null;
+        var natural = null;
+        
+        // Check for initial unix time
         if (+date >= 0) {
             unix = +date;
             natural = unixToNat(unix);
-        } else if (isNaN(+date) && moment(date, "MMMM D, YYYY").isValid()) {
+        } 
+        
+        // Check for initial natural time
+        if (isNaN(+date) && moment(date, "MMMM D, YYYY").isValid()) {
             unix = natToUnix(date);
             natural = date;
-        } else {
-            unix = null;
-            natural = null;
-        } 
+        }
+        
         var dateObj = { "unix": unix, "natural": natural };
         res.send(JSON.stringify(dateObj));
         
