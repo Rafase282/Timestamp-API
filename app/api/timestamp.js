@@ -5,18 +5,25 @@ module.exports = function(app) {
 
     app.get('/:query', function(req, res) {
         var date = req.params.query;
-        if (validateDate(date)) {
-            var unix = natToUnix(date);
-            var natural = unixToNat(unix); 
-            var dateObj = { "unix": unix, "natural": natural };
-            res.send(JSON.stringify(dateObj));
-        }
+        var unix, natural;
+        if (+date >= 0) {
+            unix = +date;
+            natural = unixToNat(unix);
+        } else if (isNaN(+date) && moment(date, "MMMM D, YYYY").isValid()) {
+            unix = natToUnix(date);
+            natural = date;
+        } else {
+            unix = null;
+            natural = null;
+        } 
+        var dateObj = { "unix": unix, "natural": natural };
+        res.send(JSON.stringify(dateObj));
         
     });
     
     function natToUnix(date) {
         // Conver from natural date to unix timestamp
-        return moment(date).format("X");
+        return moment(date, "MMMM D, YYYY").format("X");
     }
     
     function unixToNat(unix) {
@@ -24,9 +31,6 @@ module.exports = function(app) {
         return moment.unix(unix).format("MMMM D, YYYY");
     }
     
-    function validateDate(date) {
-        // Validate that the string is an actual date, either natural or unix
-        
-        return Math.round(new Date(+date).getTime()/1000);
-    }
+    
+    
 };
