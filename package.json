@@ -25,6 +25,5 @@
   "dependencies": {
     "body-parser": "^1.14.2",
     "express": "^4.13.3",
-    "mongodb": "^2.1.2"
   }
 }
