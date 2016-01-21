@@ -1,6 +1,6 @@
 {
   "name": "timestamp-api-r282",
-  "version": "0.0.2",
+  "version": "1.0.2",
   "description": "FreeCodeCamp API Basejump: Timestamp microservice",
   "main": "server.js",
   "scripts": {
