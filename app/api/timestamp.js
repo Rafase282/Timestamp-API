@@ -21,7 +21,7 @@ module.exports = function(app) {
         }
         
         var dateObj = { "unix": unix, "natural": natural };
-        res.send(JSON.stringify(dateObj));
+        res.send(dateObj);
         
     });
     
