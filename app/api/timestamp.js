@@ -10,7 +10,7 @@ module.exports = function(app) {
         
         // Check for initial unix time
         if (+date >= 0) {
-            unix = +date;
+            unix = +date.toString();
             natural = unixToNat(unix);
         } 
         
