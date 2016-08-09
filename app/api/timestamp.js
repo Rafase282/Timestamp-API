@@ -16,7 +16,7 @@ module.exports = function(app) {
         
         // Check for initial natural time
         if (isNaN(+date) && moment(date, "MMMM D, YYYY").isValid()) {
-            unix = natToUnix(date);
+            unix = +natToUnix(date);
             natural = unixToNat(unix);
         }
         
